@@ -1,4 +1,9 @@
-# Landing Page Jekyll theme
+# Google Earth Engine 日本語翻訳リポジトリ
+
+https://googleearthengine.github.io/landing-page-theme/
+
+
+---
 
 Jekyll theme based on [landing-page bootstrap theme ](http://startbootstrap.com/templates/landing-page/)
 

@@ -1,0 +1,18 @@
+# [Developer’s Guide - Get Started with Earth Engine](https://developers.google.com/earth-engine/getstarted)
+Last updated on 2018/11/16 by Kouki Takesue
+
+# Earth Engineをはじめてみよう！
+このスタートガイドはEarth Engine JavaScript API のプログラミングを手っ取り早くはじめるためのものです。JavaScriptの紹介や更なるEarth Engine APIの経験を深めたい場合はチュートリアルを、JavaScriptのコーディングスタイルについてはGoogle JavaScriptスタイルガイドをご覧ください。
+ユーザーはGoogleのインフラ上に保存されている座標が与えられた画像やベクトル・データに対してGoogle Earth Engineのアルゴリズムを実行することができます。Google Earth Engine APIは画像を表示や分析するための関数のライブラリを提供しています。Earth Engineのパブリックデータカタログには膨大な量の利用可能な画像があります。ベクターデータセットはGoogle Fusion Tablesを通して利用可能です。開発者は既存あるいは自作のベクターデータセットにアクセスすることができます。
+
+図1. Earth Engine Code Editor  code.earthengine.google.com
+
+Code EditorはEarth Engineアプリケーションを開発するための対話型環境です（図1）。中央のパネルがコードエディエタとなっていて、上には現在のスクリプトを保存するボタン（Save）と動作させるボタン（Run）、そしてマップをクリアするボタン（Reset）があります。Get LinkボタンはアドレスバーにスクリプトのユニークなURLを生成します。下のマップはスクリプトによって追加されたレイヤーを表示します。上部にはデータセットや地名を検索するための検索ボックスがあります。左パネルにはコードサンプル、保存したスクリプトおよび検索可能なAPIリファレンスがありまし。右パネルにはマップに対する照会結果を表示するインスペクターや出力コンソール、そして長時間の処理を管理するタスクマネージャーがあります。Helpボタンはユーザーガイド、ヘルプフォーラム、そしてCode Editor の機能に対する便利なキーボードショートカットリストへのリンクがあります。更に知りたい場合はCode Editor sectionをご覧ください。
+
+# Code Editor 開始とコードの実行
+このステップではCode Editor の開き方とカスタムスクリプトによって画像を表示する方法を説明します。最適な結果を得るために、GoogleのWebブラウザであるChoromeの最新版をインストールしてください。こちらから利用可能です。
+
+1. code.earthengine.google.comにアクセスしてEarth Engine Code Editorを開きます。登録済みのGoogleアカウントでログインしていない場合には利用可能なアカウントでログインしてください。
+2. Code Editorの左端のScriptsに移動します。そこにはEarth Engineデータにアクセス、表示あるいは分析するためのサンプルスクリプトがあります。
+3. “Image Collection”内にある“Filtered Composite”のサンプルを選択します。すると、中央のコンソールにスクリプトが表示されます。Runボタンをクリックするとスクリプトが実行されます。検索条件が与えられた合成画像のサンプルコードがコロラド州とユタ州にまたがる範囲のLandsat 7の画像を選択します。そして、トゥルーカラーで合成された画像を表示します。このサンプルはfilter()、 clip()、そして Map.addLayer()といった頻繁に使用するメソッドを紹介しています。
+

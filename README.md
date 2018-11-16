@@ -10,7 +10,7 @@ https://googleearthengine.github.io/gee-manuals4jp/
 ![googleearthengine](https://user-images.githubusercontent.com/416977/48591842-0b0d1c00-e989-11e8-9263-4ee7116c327f.png)
 
 ### Developer's Guide
-* Introduction
+* [Introduction](developersguide/introduction.md)
 * Get Started
 * Earth Engine Code Editor
 * Python Installation

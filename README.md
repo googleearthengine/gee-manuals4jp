@@ -50,4 +50,5 @@ https://googleearthengine.github.io/gee-manuals4jp/
 ## License
 © Google and Translation Contributors, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)
 
+<img src="assets/img/CCby.jpg" width="100">
 

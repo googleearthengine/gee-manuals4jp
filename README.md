@@ -30,9 +30,14 @@ https://googleearthengine.github.io/gee-manuals4jp/
 * Iterating over an ImageCollection
 
 
-
 ## Google Earth Blog on Medium
-* 
+* 2018 Earth Engine User Summit Recap
+* An easier way to browse, discover, and use Earth Engine datasets
+* Planespotting
+* Introduction to Map Projections with Google Earth Engine: Part 1
+* What’s New in Earth Engine: New Functions and Features
+* Mapping Global Travel Time to Urban Resources
+* Making it easier to reuse code with Earth Engine script modules
 
 
 ## 翻訳ソン作業用ファイル群

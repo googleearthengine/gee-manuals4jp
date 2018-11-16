@@ -3,7 +3,9 @@ Last updated on 2018/11/16 by Taichi Furuhashi
 
 _注意: Earth Engineは、サービスレベル契約（SLA）及び非推奨ポリシーの対象ではありません。 利用には[サインアップ](https://signup.earthengine.google.com/)が必要です。_
 
-https://youtu.be/4E6yQLoGO2o
+<a href="https://youtu.be/4E6yQLoGO2o"><img src="https://github.com/googleearthengine/gee-manuals4jp/blob/master/assets/img/youtube-logo_626x626.jpg?raw=true" width="50"><br>
+Introduction to planetary-scale geospatial analysis with Google Earth Engine</a>
+
 
 # イントロダクション
 Google Earth Engineへようこそ：世界で最も高度なクラウドベースの地理空間情報解析プラットフォームです。 Earth Engineの目的は次のとおりです。

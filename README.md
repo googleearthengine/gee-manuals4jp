@@ -2,8 +2,16 @@
 
 https://googleearthengine.github.io/gee-manuals4jp/
 
+![googleearthengine4edu](https://user-images.githubusercontent.com/416977/48591832-05afd180-e989-11e8-9a95-941d4d67be8d.jpg)
 
 ---
+
+## Google Earth Engine Manuals 
+![googleearthengine](https://user-images.githubusercontent.com/416977/48591842-0b0d1c00-e989-11e8-9263-4ee7116c327f.png)
+
+
+## Google Earth Blog on Medium
+* 
 
 
 ## 翻訳ソン作業用ファイル群

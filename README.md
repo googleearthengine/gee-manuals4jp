@@ -6,8 +6,29 @@ https://googleearthengine.github.io/gee-manuals4jp/
 
 ---
 
-## Google Earth Engine Manuals 
+## [Google Earth Engine Developer's Guide](https://developers.google.com/earth-engine/)
 ![googleearthengine](https://user-images.githubusercontent.com/416977/48591842-0b0d1c00-e989-11e8-9263-4ee7116c327f.png)
+
+### Developer's Guide
+* Introduction
+* Get Started
+* Earth Engine Code Editor
+* Python Installation
+* Command Line Tool
+* Get Help
+
+### Image
+* Image Overview
+
+### ImageCollection
+* ImageCollection Overview
+* ImageCollection Information and Metadata
+* Filtering an ImageCollection
+* Mapping over an ImageCollection
+* Reducing an ImageCollection
+* Compositing and Mosaicking
+* Iterating over an ImageCollection
+
 
 
 ## Google Earth Blog on Medium

@@ -1,6 +1,10 @@
 # Developer’s Guide - Introduction
 Last updated on 2018/09/19 by Taichi Furuhashi
 
+Notice: Earth Engine is not subject to any Service-Level Agreement (SLA) or deprecation policy. [Signup for Earth Engine](https://signup.earthengine.google.com/). 
+
+https://youtu.be/4E6yQLoGO2o
+
 # イントロダクション
 Google Earth Engineへようこそ：世界で最も高度なクラウドベースの地理空間情報解析プラットフォームです。 Earth Engineの目的は次のとおりです。
 * グローバル規模で高度に対話型のアルゴリズム開発を行える
@@ -14,3 +18,5 @@ Google Earth Engineは、惑星規模の環境データ分析のためのクラ�
 * Compute power: 地理空間データの並列処理に最適化されたGoogleの計算インフラストラクチャ。 [Gorelick et al. (2017)](http://www.sciencedirect.com/science/article/pii/S0034425717302900)
 * APIs: Earth EngineサーバーにリクエストするためのJavaScriptおよびPython用のAPI（GitHub上でホストされる）。 これらのドキュメントはJavaScriptに焦点を当てています。 （Javascript API）。 Pythonについては、PythonのインストールガイドとPythonの例を参照してください。
 * Code Editor: Javascript APIを使用した複雑な空間解析の迅速なプロトタイプ作成と可視化のためのオンライン統合開発環境（IDE）。 コードエディタのドキュメントをご覧ください。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4E6yQLoGO2o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

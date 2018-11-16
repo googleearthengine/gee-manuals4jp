@@ -119,4 +119,126 @@ Map.addLayer(counties, {}, 'counties');
 この表の暗号化されたキーは、ft:の後ろと引用符の前のすべてです。
 
 
+# images、image collections、feature collectionsを探す
+Earth Engineのデータカタログを検索することで、画像や画像コレクションを検出できます。たとえば、「Landsat 8」を検索フィールドに入力すると、ラスタデータセットのリストが表示されます。 （Earth Engineのデータセットの完全なリストはthe Earth Engine Data Catalogにあります）。データセット名をクリックすると、簡単な説明、一時的なアベイラビリティ、データプロバイダ、ImageCollection IDに関する情報が表示されます。Importボタンをクリックすると、スクリプトの先頭にImportsセクションが自動的に作成され、このコレクションの変数が設定されます。
+
+または、ImageCollection IDをコピーしてコードに貼り付けます。たとえば、 'Landsat 8'検索の最初の結果を選択し、次のようにIDをコピーします。
+
+`var collection = ee.ImageCollection('LANDSAT/LC08/C01/T1');`
+
+これは地球の表面にまたがる多くのイメージの集合であるため、コレクション内の個々のイメージを見つけるには検索を絞り込むためにフィルタリングが必要です。あるいは、イメージの集合は、合成およびモザイク技術を用いて単一の画像に縮小することができます。次のセクションでは、フィルタリングと合成について詳しく説明します（抑制を参照してください）。
+
+Feature collectionsは、画像のように、キュレーションされたFusion Tablesカタログがないため、簡単に見つけることはできません。ただし、Code Editorで検索すると、 'Table'（ベクター）データセットも表示されます。これらは、一般に、さまざまな品質と完全性を持つユーザーがアップロードしたコンテンツです。いくつかの有用なデータセットがここにリストされています。 Fusion Tableを作成するには、CSVまたはKMLのテキストを地理座標でアップロードします。ベクターデータセットのインポートについてはこちらをご覧ください。
+
+
+# フィルタリングとソート
+結果の数を制限するために、コレクションを空間および/または時間でフィルタリングする必要があることがよくあります。たとえば、サンフランシスコのクラウドフリーシーンを見つけるために、Landsat 8シーンコレクションをソートするタスクを考えてみましょう。まず、関心領域を定義する必要があります。ポイントはしばしばそれに役立ちます。Code Editorの右側にあるInspectorタブをアクティブにして、関心領域の中心付近をクリックし、Inspectorタブから座標をコピーしてから、次のようにしてPointを作成します。
+
+`var point = ee.Geometry.Point(-122.262, 37.8719);`
+
+開始日と終了日を設定します。
+
+`
+var start = ee.Date('2014-06-01');
+var finish = ee.Date('2014-10-01');
+`
+
+ポイントと日付を使用してLandsat 8コレクションをフィルタリングし、次にLandsat 8シーンメタデータの検査中に検出されたメタデータプロパティを使用してソートします。
+
+`
+var filteredCollection = ee.ImageCollection('LANDSAT/LC08/C01/T1')
+  .filterBounds(point)
+  .filterDate(start, finish)
+  .sort('CLOUD_COVER', true);
+`
+
+このコレクションは安全に表示して検査することができます。（コレクションに画像が多すぎる場合は、表示が非常に遅くなるか、タイムアウトになるか、エラーが返されます。）コレクション内のイメージはImageCollectionの 'features'プロパティに格納されたListであることに注意してください。上記のように、コレクション内の任意のイメージのIDをImage constructorにコピーすることができます。あるいは、最初の画像を取得します（最低雲量）。
+
+var first = filteredCollection.first();
+
+ee.Filterを引数としてfilter()を使用して、完全なEarth Engineフィルタリング機能にアクセスします。 （上で使用されたfilterBounds()およびfilterDate()メソッドはショートカットです）。たとえば、次のようにフィルタを作成し、それを使用してFeatureCollectionをフィルタリングし、結果を表示します。
+
+// Load a feature collection from a Fusion Table.
+var featureCollection = ee.FeatureCollection('ft:1fRY18cjsHzDgGiJiS2nnpUU3v9JPDc2HNaR7Xk8');
+
+// Filter the collection.
+var filteredFC = featureCollection.filter(ee.Filter.eq('Name', 'California'));
+
+// Display the collection.
+Map.addLayer(filteredFC, {}, 'California');
+
+以下のリンクには、この時点までに使用されたコードが含まれています。Code Editorの上部にあるGet Linkボタンをクリックし、ブラウザのアドレスバーからURLをコピーして、これらのリンクを取得します。
+https://code.earthengine.google.com/74508b22766c10e74e87a7ebaccec9e7
+
+
+# バンド間演算 Band Math
+Imageメソッドを使用してイメージに対して数学演算を実行する。これは、バンド再結合（スペクトルインデックス）、画像差分、または定数による乗算などの数学的演算を含むことができます。たとえば、標準化差植生指数（NDVI）画像の差を20年ごとに計算します。
+
+// This function gets NDVI from Landsat 5 imagery.
+var getNDVI = function(image) {
+  return image.normalizedDifference(['B4', 'B3']);
+};
+
+// Load two Landsat 5 images, 20 years apart.
+var image1 = ee.Image('LANDSAT/LT05/C01/T1_TOA/LT05_044034_19900604');
+var image2 = ee.Image('LANDSAT/LT05/C01/T1_TOA/LT05_044034_20100611');
+
+// Compute NDVI from the scenes.
+var ndvi1 = getNDVI(image1);
+var ndvi2 = getNDVI(image2);
+
+// Compute the difference in NDVI.
+var ndviDifference = ndvi2.subtract(ndvi1);
+
+この例では、ユーザー定義であるfunctionの使用に注目してください。次のセクションの関数の詳細。
+
+
+# マッピング（for-loopを使わない方法）
+コレクション内のアイテムを繰り返し処理するには、map()を使用します。 （for-loopは、Earth Engineで行うループではありませんので避けてください）。 map()関数は、ImageCollection、FeatureCollection、またはListに適用され、その引数として関数を受け入れることができます。関数の引数は、それがマップされているコレクションの要素です。これは、追加など、同じ方法でコレクションのすべての要素を変更する場合に便利です。たとえば、次のコードは、NDVIバンドをImageCollectionのすべてのイメージに追加します。
+
+// This function gets NDVI from Landsat 8 imagery.
+var addNDVI = function(image) {
+  return image.addBands(image.normalizedDifference(['B5', 'B4']));
+};
+
+// Load the Landsat 8 raw data, filter by location and date.
+var collection = ee.ImageCollection('LANDSAT/LC08/C01/T1')
+  .filterBounds(ee.Geometry.Point(-122.262, 37.8719))
+  .filterDate('2014-06-01', '2014-10-01');
+
+// Map the function over the collection.
+var ndviCollection = collection.map(addNDVI);
+
+別の一般的なタスクは、FeatureCollectionのフィーチャに新しいプロパティ（’attribute’'または 'field'）を追加することです。次の例では、新しいプロパティは2つの既存の属性を含む計算です。
+
+// This function creates a new property that is the sum of two existing properties.
+var addField = function(feature) {
+  var sum = ee.Number(feature.get('property1')).add(feature.get('property2'));
+  return feature.set({'sum': sum});
+};
+
+// Create a FeatureCollection from a list of Features.
+var features = ee.FeatureCollection([
+  ee.Feature(ee.Geometry.Point(-122.4536, 37.7403),
+    {property1: 100, property2: 100}),
+    ee.Feature(ee.Geometry.Point(-118.2294, 34.039),
+    {property1: 200, property2: 300}),
+]);
+
+// Map the function over the collection.
+var featureCollection = features.map(addField);
+
+// Print a selected property of one Feature.
+print(featureCollection.first().get('sum'));
+
+// Print the entire FeatureCollection.
+print(featureCollection);
+
+
+
+# 
+
+
+
+
 

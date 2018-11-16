@@ -1,7 +1,7 @@
 # Developer’s Guide - Introduction
-Last updated on 2018/09/19 by Taichi Furuhashi
+Last updated on 2018/11/16 by Taichi Furuhashi
 
-注意: Earth Engineは、サービスレベル契約（SLA）及び非推奨ポリシーの対象ではありません。 利用には[サインアップ](https://signup.earthengine.google.com/)が必要です。
+_注意: Earth Engineは、サービスレベル契約（SLA）及び非推奨ポリシーの対象ではありません。 利用には[サインアップ](https://signup.earthengine.google.com/)が必要です。_
 
 https://youtu.be/4E6yQLoGO2o
 

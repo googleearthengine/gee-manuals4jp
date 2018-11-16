@@ -1,38 +1,21 @@
 # Google Earth Engine 日本語翻訳リポジトリ
 
-https://googleearthengine.github.io/landing-page-theme/
+https://googleearthengine.github.io/gee-manuals4jp/
 
 
 ---
 
-Jekyll theme based on [landing-page bootstrap theme ](http://startbootstrap.com/templates/landing-page/)
 
-## How to use
- - Place a image in `/img/services/`
- - Create posts to display your services. Use the follow as an example:
+## 翻訳ソン作業用ファイル群
+ - [Google Earth Engine Translathon Hub](https://docs.google.com/spreadsheets/d/1paJh0lIqi3CYQkvaBIb2Iu9dOTSAWK6xfZdSPG19otw/edit#gid=0)
+ - [Google Earth Engine Translathon Mastersheet](https://docs.google.com/document/d/1xFFZUjpdg35ubVi_KmXhHLltvbhpOdUFswOUvO7bgac/edit)
+ 
 
-```txt
 ---
-layout: default
-img: ipad.png
-category: Services
-title: The service title
----
-The description of this service
-```
 
-## Demo
-View this jekyll theme in action [here](https://swcool.github.io/landing-page-theme)
+## Template's License
+* https://github.com/swcool/landing-page-theme
 
-## Screenshot
-![screenshot](https://raw.githubusercontent.com/swcool/landing-page-theme/master/img/screenshot.png)
-
-===
-
-For more Jekyll details, read [documentation](http://jekyllrb.com/).
-This Jekyll theme used [Freelancer Jekyll theme](https://github.com/jeromelachaud/freelancer-theme/) as reference.
-
-## License
 The contents of this repository are licensed under the [Apache
 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
 

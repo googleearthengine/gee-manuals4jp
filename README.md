@@ -47,11 +47,7 @@ https://googleearthengine.github.io/gee-manuals4jp/
 
 ---
 
-## Template's License
-* https://github.com/swcool/landing-page-theme
+## License
+© Google and Translation Contributors, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)
 
-The contents of this repository are licensed under the [Apache
-2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
 
-## Version
-1.0.1

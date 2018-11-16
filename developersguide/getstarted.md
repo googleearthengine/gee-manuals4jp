@@ -47,4 +47,76 @@ Notation used in the guides:
 Static methods called on an Earth Engine class (for example ee.Image) are written as Image.staticMethod(). Methods called on an instance of a class are written as image.instanceMethod(). The lowercase image means that a variable named image refers to an instance of the ee.Image class.
 
 このガイドにおける注記について
-Earth Engineのクラスで呼び出される静的なメソッド (ee.Imageなど) はImage.staticMethod() のように書かれます。クラスのインスタンスで呼び出されるメソッド
+Earth Engineのクラスで呼び出される静的なメソッド (ee.Imageなど) はImage.staticMethod() のように書かれます。クラスのインスタンスで呼び出されるメソッドはimage.instanceMethod()のように書かれます。小文字で始まるimageはee.Imageクラスを参照参照するimageというインスタンスの変数名を表します。
+
+# ‘Hello world!’ JavaScript
+コンソールに情報を表示するのはオブジェクトや計算の数値結果の表示、オブジェクトのメタデータの表示やデバックの手助けについて基本的なタスクです。その象徴であるCode Editorの’Hello World!’サンプルは次のように書かれます。
+
+`print(‘Hello world!’);`
+
+この行をCode editorにコピーして、Runをクリックします。するとアウトプットはCode Editorの右側にあるConsoleタブに表示されます。よりリモートセンシングに関連する例では、以下の行はLandsat 8イメージのメタデータを表示します。
+
+`print(ee.Image('LANDSAT/LC08/C01/T1/LC08_044034_20140318'));`
+
+コンソールの出力を注意深く調べて、Landsatイメージで使用できるメタデータを確認します。
+
+
+# マップにデータを追加する
+コンソールに情報を表示することに加えて、地図にデータを追加することは、地理的データを視覚化する方法です。この場合、Map.addLayer()を使用します。このサンプルでは、ee.Image()を使用してImageをインスタンス化し（これらのイメージの検索方法は後で説明します）、Map.addLayer()でマップに追加され、マップはイメージの中央に配置されます。
+
+`
+// Load an image.
+var image = ee.Image('LANDSAT/LC08/C01/T1/LC08_044034_20140318');
+
+// Center the map on the image.
+Map.centerObject(image, 9);
+
+// Display the image.
+Map.addLayer(image);
+`
+
+The second parameter of Map.centerObject() is a zoom level, where higher numbers indicate larger scale (more zoomed in). The parameters for the Map functions are described in depth in the API reference accessible from the Docs tab. If the appearance of the image is unsatisfactory, configure the display parameters with an additional argument to Map.addLayer(). For example:
+
+`
+// Load the image from the archive.
+var image = ee.Image('LANDSAT/LC08/C01/T1/LC08_044034_20140318');
+
+// Define visualization parameters in an object literal.
+var vizParams = {bands: ['B5', 'B4', 'B3'], min: 5000, max: 15000, gamma: 1.3};
+
+// Center the map on the image and display.
+Map.centerObject(image, 9);
+Map.addLayer(image, vizParams, 'Landsat 8 false color');
+`
+
+Map.centerObject()の2番目のパラメータはズームレベルです。数値が大きいほどスケールが大きくなります（ズームイン）。Map関数のパラメータについては、DocsタブからアクセスできるAPIリファレンスに詳しく説明されています。画像の外観が不満足な場合は、Map.addLayer()の引数を追加して表示パラメータを設定します。以下は例です。
+
+`
+// Load the image from the archive.
+var image = ee.Image('LANDSAT/LC08/C01/T1/LC08_044034_20140318');
+
+// Define visualization parameters in an object literal.
+var vizParams = {bands: ['B5', 'B4', 'B3'], min: 5000, max: 15000, gamma: 1.3};
+
+// Center the map on the image and display.
+Map.centerObject(image, 9);
+Map.addLayer(image, vizParams, 'Landsat 8 false color');
+Observe that the visualization parameters are defined by an object literal, which includes a list of bands to display, a minimum and maximum digital number and a gamma value. (Learn more about Landsat bands here. Learn more about image visualization here).
+Use Map.addLayer() to add features and feature collections to the map. For example,
+var counties = ee.FeatureCollection('ft:1S4EB6319wWW2sWQDPhDvmSBIVrD3iEmCLYB7nMM');
+Map.addLayer(counties, {}, 'counties');
+Note that the encrypted key of this table is everything after the ft: and before the quote.
+`
+
+視覚化パラメータは、表示するバンドのリスト、最小および最大デジタル数、およびガンマ値を含むオブジェクトリテラルによって定義されることに注意してください。 （Landsat bandsの詳細はこちら、イメージビジュアライゼーションの詳細はこちらをご覧ください）。
+Map.addLayer()を使用してfeaturesとfeature collectionsをマップに追加します。以下が例です。
+
+`
+var counties = ee.FeatureCollection('ft:1S4EB6319wWW2sWQDPhDvmSBIVrD3iEmCLYB7nMM');
+Map.addLayer(counties, {}, 'counties');
+`
+
+この表の暗号化されたキーは、ft:の後ろと引用符の前のすべてです。
+
+
+
